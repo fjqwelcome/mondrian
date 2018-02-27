@@ -189,7 +189,7 @@ class RolapConnectionPool {
                 GenericObjectPool.WHEN_EXHAUSTED_BLOCK, // action when exhausted
                 3000, // max wait (milli seconds)
                 10, // max idle
-                false, // test on borrow
+                true, // test on borrow
                 false, // test on return
                 60000, // time between eviction runs (millis)
                 5, // number to test on eviction run
@@ -217,7 +217,7 @@ class RolapConnectionPool {
                     // validation query (must return at least 1 row e.g. Oracle:
                     // select count(*) from dual) to test connection, can be
                     // null
-                    null,
+                        "SELECT 1",
                     // default "read only" setting for borrowed connections
                     false,
                     // default "auto commit" setting for returned connections
